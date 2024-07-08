@@ -1,0 +1,8 @@
+package com.miocroservice.user.service.services.external;
+
+import org.springframework.cloud.openfeign.FeignClient;
+
+@FeignClient(name="RATING-SERVICE")
+public interface RatingService {
+
+}

@@ -1,0 +1,15 @@
+package com.miocroservice.hotel.service.services;
+
+import java.util.List;
+
+import com.miocroservice.hotel.service.entities.Hotel;
+
+public interface HotelService {
+	
+	Hotel create(Hotel hotel);
+	
+	List<Hotel> getAllHotels();
+	
+	HotelService getHotel(String hotelId);
+
+}

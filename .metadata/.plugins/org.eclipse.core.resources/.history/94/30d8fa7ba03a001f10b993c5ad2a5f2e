@@ -1,0 +1,5 @@
+package com.miocroservice.user.service.services.implementations;
+
+public class UserServiceImplementation {
+
+}

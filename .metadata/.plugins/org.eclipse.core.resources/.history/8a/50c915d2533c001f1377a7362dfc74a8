@@ -1,0 +1,5 @@
+package com.miocroservice.user.service.configuration;
+
+public class ConfigurationClass {
+
+}

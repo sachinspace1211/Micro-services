@@ -1,0 +1,5 @@
+package com.miocroservice.hotel.service.services;
+
+public interface HotelService {
+
+}

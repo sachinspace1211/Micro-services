@@ -1,0 +1,32 @@
+package com.miocroservice.hotel.service.implementations;
+
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+
+import com.miocroservice.hotel.service.entities.Hotel;
+import com.miocroservice.hotel.service.exceptions.ResourceNotFoundException;
+import com.miocroservice.hotel.service.repositories.HotelRepository;
+import com.miocroservice.hotel.service.services.HotelService;
+
+public class HotelServiceImplementation implements HotelService{
+	
+	@Autowired
+	HotelRepository hotelRepository;
+
+	@Override
+	public Hotel create(Hotel hotel) {
+		return hotelRepository.save(hotel);
+	}
+
+	@Override
+	public List<Hotel> getAllHotels() {
+		return hotelRepository.findAll();
+	}
+
+	@Override
+	public Hotel getHotel(String hotelId) {
+		return hotelRepository.findById(hotelId).orElseThrow(()->new ResourceNotFoundException("Hotel with given id not found"));
+	}
+
+}

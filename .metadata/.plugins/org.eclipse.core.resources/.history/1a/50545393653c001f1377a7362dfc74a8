@@ -1,0 +1,63 @@
+package com.miocroservice.user.service.services.implementations;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.UUID;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+import org.springframework.web.client.RestTemplate;
+
+import com.miocroservice.user.service.entities.Rating;
+import com.miocroservice.user.service.entities.User;
+import com.miocroservice.user.service.exceptions.ResourceNotFoundException;
+import com.miocroservice.user.service.repositoriees.UserRepository;
+import com.miocroservice.user.service.services.UserService;
+
+@Service
+public class UserServiceImplementation implements UserService{
+	
+	@Autowired
+	private RestTemplate restTemplate;
+	
+	@Autowired
+	private UserRepository userRepository;
+	
+	private Logger logger = LoggerFactory.getLogger(UserServiceImplementation.class);
+
+	@Override
+	public User saveUser(User user) {
+		String randomUserId = UUID.randomUUID().toString();
+		user.setUserId(randomUserId);
+		return userRepository.save(user);
+	}
+
+	@Override
+	public List<User> getAllUser() {
+		ArrayList<User> userList = userRepository.findAll();
+		
+		for(User user : userList) {
+			
+		}
+		
+		return userList;
+	}
+
+	@Override
+	public User getUser(String userId) {
+		
+		//Getting user from database using userId
+	    User user =	userRepository.findById(userId).orElseThrow(
+				()->new ResourceNotFoundException("User with given id is not found on server : "+userId));
+	    
+	    //Fetching rating for the user by userId
+	    ArrayList<Rating> ratingsOfUser = restTemplate.getForObject("http://localhost:8083/ratings/getRatingsByUserId/"+user.getUserId(), ArrayList.class);
+	    
+	    user.setRatings(ratingsOfUser);
+	    
+		return user;		
+	}
+
+}

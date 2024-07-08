@@ -1,0 +1,7 @@
+package com.miocroservice.rating.service.entities;
+
+@Entity
+@Table(name="RATINGS")
+public class Rating {
+
+}

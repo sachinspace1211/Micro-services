@@ -1,0 +1,5 @@
+package com.miocroservice.rating.service.controllers;
+
+public class RatingControllers {
+
+}

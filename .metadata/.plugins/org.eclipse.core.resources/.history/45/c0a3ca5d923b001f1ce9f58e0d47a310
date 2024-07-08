@@ -1,0 +1,5 @@
+package com.miocroservice.hotel.service.implementations;
+
+public class HotelServiceImplementation {
+
+}

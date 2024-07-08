@@ -1,0 +1,11 @@
+package com.miocroservice.rating.service.repositories;
+
+import org.springframework.data.mongodb.repository.MongoRepository;
+import org.springframework.stereotype.Repository;
+
+import com.miocroservice.rating.service.entities.Rating;
+
+@Repository
+public interface RatingRepository extends MongoRepository<Rating, String>{
+
+}

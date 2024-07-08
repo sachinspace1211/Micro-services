@@ -1,0 +1,5 @@
+package com.miocroservice.user.service.exceptionControllers;
+
+public class GlobalExceptionHandler {
+
+}
